@@ -6,7 +6,7 @@ import Plus from "./plus";
 type PrimaryButton = {
   icon?: "right" | "left";
   size?: "lg" | "md" | "sm";
-  font?: "normal" | "medium";
+  font?: "normal" | "medium"| "small";
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   isLoading?: boolean;
   text: string;
@@ -23,7 +23,7 @@ export default function SecondaryButton({
 }: PrimaryButton) {
   const [isClick, setIsClick] = useState(false);
   const textSize =
-    !size || size == "lg" ? "text-lg" : size == "md" ? "text-md" : "text-sm";
+    !size || size == "md" ? "text-base" : size == "lg" ? "text-lg" : "text-sm";
   const textFont =
     !font || font == "normal"
       ? "font-normal"
@@ -40,7 +40,7 @@ export default function SecondaryButton({
       onBlur={() => {
         setIsClick(false);
       }}
-      className={`rounded border focus:border-L_Gray px-5 py-10px ${
+      className={`rounded border w-fit focus:border-L_Gray px-5 py-10px ${
         disable
           ? "bg-Silver text-Grey-blue"
           : "text-Primary hover:bg-Silver hover:border-Primary"
