@@ -6,41 +6,38 @@ import React from "react";
 import { motion, Variants, MotionConfig } from "framer-motion";
 const varaints: Variants = {
   left: {
-    x: "-100%",
+    translateX: "-100%",
     opacity: 0,
   },
   right: {
-    x: "100%",
+    translateX: "100%",
     opacity: 0,
   },
   up: {
-    y: "-100%",
+    translateY: "-100%",
     opacity: 0,
   },
   initial: {
     translateX: 0,
     translateY: 0,
-    y: 0,
-    x: 0,
     opacity: 1,
   },
 };
 export default function Header() {
   return (
-    <motion.header
-      viewport={{
-        once: true,
-        amount: 0.8,
-      }}
+    <header
+
       className="w-full flex justify-around items-center py-2 bg-Silver"
     >
       <MotionConfig
         transition={{
+          
           duration: 1,
         }}
       >
         <motion.span
           variants={varaints}
+          viewport={{ once: true }}
           initial="left"
           whileInView="initial"
           className="flex gap-1"
@@ -50,9 +47,10 @@ export default function Header() {
         </motion.span>
         <motion.ul
           variants={varaints}
+          viewport={{ once: true }}
           initial="up"
           whileInView="initial"
-          className="gap-3 font-normal text-base hidden md:flex"
+          className="gap-3 font-normal text-sm hidden md:flex"
         >
           <li>Home</li>
           <li>Service</li>
@@ -64,6 +62,7 @@ export default function Header() {
         <motion.div
           variants={varaints}
           initial="right"
+          viewport={{ once: true }}
           whileInView="initial"
           className="flex gap-1"
         >
@@ -71,6 +70,6 @@ export default function Header() {
           <PrimaryButton font="medium" text="Sign up" />
         </motion.div>
       </MotionConfig>
-    </motion.header>
+    </header>
   );
 }

@@ -34,6 +34,17 @@ module.exports = {
       spacing: {
         "10px": "10px",
       },
+      fontSize: {
+        h1: ["64px", "76px"],
+        h2: ["36px", "44px"],
+        h3: ["28px", "36px"],
+        h4: ["20px", "28px"],
+
+        b1: ["18px", "28px"],
+        b2: ["16px", "24px"],
+        b3: ["14px", "20px"],
+        b4: ["12px", "16px"],
+      },
     },
   },
   plugins: [],
