@@ -4,6 +4,8 @@ import HeroSection from "./_components/heroSection";
 import OurClient from "./_components/ourClient";
 import Design from "./_components/design";
 import Business from "./_components/business";
+import Customers from "./_components/customers";
+import Caring from "./_components/caring";
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
       <Pixelgrade />
       <Business/>
       <Design />
+      <Customers/>
+      <Caring/>
     </main>
   );
 }

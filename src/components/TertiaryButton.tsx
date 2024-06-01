@@ -40,7 +40,7 @@ export default function TertiaryButton({
       onBlur={() => {
         setIsClick(false);
       }}
-      className={`rounded focus:border-D_Gray w-fit ${
+      className={`rounded flex items-center gap-2 focus:border-D_Gray w-fit ${
         disable ? "bg-Silver text-Grey-blue" : "text-Primary hover:bg-Silver "
       }${textSize} ${textFont} ${isClick || isLoading ? "bg-Tint5" : ""}`}
     >

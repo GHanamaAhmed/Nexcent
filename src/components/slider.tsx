@@ -23,7 +23,13 @@ const renderDotsItem = ({ isActive }: { isActive: boolean }) => {
   );
 };
 
-const Carousel = ({ items }: { items: React.ReactNode[] }) => {
+const Carousel = ({
+  items,
+  disableDotsControls,
+}: {
+  items: React.ReactNode[];
+  disableDotsControls?: boolean;
+}) => {
   const [hydration, setHydration] = useState(false);
   useEffect(() => {
     setHydration(true);
@@ -33,9 +39,10 @@ const Carousel = ({ items }: { items: React.ReactNode[] }) => {
       responsive={hydration ? responsive : undefined}
       mouseTracking
       items={items}
-      ssrSilentMode={false}
+      // ssrSilentMode={false}
       renderDotsItem={renderDotsItem}
       disableButtonsControls={true}
+      disableDotsControls={disableDotsControls}
       infinite
       autoPlay
       autoPlayInterval={3000}

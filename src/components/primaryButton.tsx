@@ -40,13 +40,13 @@ export default function PrimaryButton({
       onBlur={() => {
         setIsClick(false);
       }}
-      className={`rounded  focus:border-2 w-fit focus:border-D_Gray px-5 py-10px ${
+      className={`rounded  focus:border-2 flex items-center gap-2 w-fit focus:border-D_Gray px-5 py-10px ${
         disable ? "bg-Silver text-Grey-blue" : "text-white bg-Primary "
       }${textSize} ${textFont} ${isClick || isLoading ? "bg-Shade2" : ""}`}
     >
       {icon == "left" && (
         <Plus
-          className={`${disable ? "stroke-Grey-blue" : "stroke-Primary"}`}
+          className={`${disable ? "stroke-Grey-blue" : "stroke-white"}`}
           width={!size || size == "lg" ? 24 : 16}
           height={!size || size == "lg" ? 24 : 16}
         />
@@ -54,7 +54,7 @@ export default function PrimaryButton({
       {text}
       {icon == "right" && (
         <Arrow
-          className={`${disable ? "stroke-Grey-blue" : "stroke-Primary"}`}
+          className={`${disable ? "stroke-Grey-blue" : "stroke-white"}`}
           width={!size || size == "lg" ? 24 : 16}
           height={!size || size == "lg" ? 24 : 16}
         />
@@ -62,7 +62,7 @@ export default function PrimaryButton({
       {isLoading && (
         <Spin
           className={`animate-spin ${
-            disable ? "stroke-Grey-blue" : "stroke-Primary"
+            disable ? "stroke-Grey-blue" : "stroke-white"
           }`}
           width={!size || size == "lg" ? 24 : 16}
           height={!size || size == "lg" ? 24 : 16}

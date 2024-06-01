@@ -26,41 +26,58 @@ const cards = [
 const items: Variants = {
   hidden: { scale: 0 },
   visible: {
-    y: 0,
     scale: 1,
-    transition: {
-      duration: 1,
-    },
   },
 };
-const container: Variants = {
-  visible: {
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2,
-    },
-  },
-};
+
 export default function Community() {
   return (
-    <section className="w-full flex flex-col items-center px-4 py-2">
-      <div className="flex flex-col gap-2 items-center">
-        <p className="text-D_Gray text-h4 font-semibold md:text-h2">
-          Manage your entire community
-        </p>
-        <p className="text-D_Gray text-h4 font-semibold md:text-h2">
-          in a single system
-        </p>
-        <p className="text-Gray text-b4 md:text-b2">
-          Who is Nextcent suitable for?
-        </p>
-      </div>
+    <motion.section
+      viewport={{ once: true }}
+      transition={{
+        delayChildren: 1,
+        staggerChildren: 2,
+        duration:1
+      }}
+      initial="hidden"
+      whileInView="visible"
+      className="w-full flex flex-col items-center px-4 py-2"
+    >
       <motion.div
         viewport={{ once: true }}
-
+        variants={items}
         transition={{
           delayChildren: 0.3,
           staggerChildren: 0.2,
+          duration:1
+        }}
+        initial="hidden"
+        whileInView="visible"
+        className="flex flex-col gap-2 items-center"
+      >
+        <motion.p
+          variants={items}
+          className="text-D_Gray text-h4 font-semibold md:text-h2"
+        >
+          Manage your entire community
+        </motion.p>
+        <motion.p
+          variants={items}
+          className="text-D_Gray text-h4 font-semibold md:text-h2"
+        >
+          in a single system
+        </motion.p>
+        <motion.p variants={items} className="text-Gray text-b4 md:text-b2">
+          Who is Nextcent suitable for?
+        </motion.p>
+      </motion.div>
+      <motion.div
+        viewport={{ once: true }}
+        variants={items}
+        transition={{
+          delayChildren: 0.3,
+          staggerChildren: 0.2,
+          duration:1
         }}
         initial="hidden"
         whileInView="visible"
@@ -88,6 +105,6 @@ export default function Community() {
           </motion.div>
         ))}
       </motion.div>
-    </section>
+    </motion.section>
   );
 }

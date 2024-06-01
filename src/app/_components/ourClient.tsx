@@ -3,23 +3,6 @@ import Carousel from "@/components/slider";
 import Image from "next/image";
 import React from "react";
 import { AnimatePresence, Variants, motion } from "framer-motion";
-const logos = [...Array(7)].map((_, index) => (
-  <motion.div
-    viewport={{ once: true }}
-    initial={{ opacity: 0 }}
-    whileInView={{
-      opacity: 1,
-      transition: {
-        duration: 1,
-        delay: 0.2 * index,
-      },
-    }}
-    className="relative w-12 h-12"
-  >
-    {" "}
-    <Image src={`/images/Logo-${index}.webp`} fill alt="" />
-  </motion.div>
-));
 const p: Variants = {
   left: {
     translateX: "-100%",
@@ -36,7 +19,19 @@ const p: Variants = {
       duration: 1,
     },
   },
+  hide: {
+    scale: 0,
+  },
+  visible: {
+    scale: 1,
+  },
 };
+const logos = [...Array(7)].map((_, index) => (
+  <motion.div variants={p} className="relative w-12 h-12">
+    {" "}
+    <Image src={`/images/Logo-${index}.webp`} fill alt="" />
+  </motion.div>
+));
 export default function OurClient() {
   return (
     <section className="flex w-full flex-col gap-2 items-center py-4">
@@ -59,9 +54,20 @@ export default function OurClient() {
         We have been working with some Fortune 500+ clients
       </motion.p>
       <AnimatePresence>
-        <div className="w-full px-4 md:w-11/12">
+        {" "}
+        <motion.div
+          viewport={{ once: true }}
+          initial={"hide"}
+          whileInView={"visible"}
+          transition={{
+            delayChildren: 0.3,
+            staggerChildren: 0.2,
+            duration: 1,
+          }}
+          className="w-full px-4 md:w-11/12"
+        >
           <Carousel items={logos} />
-        </div>
+        </motion.div>
       </AnimatePresence>
     </section>
   );

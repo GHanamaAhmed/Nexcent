@@ -40,7 +40,7 @@ export default function SecondaryButton({
       onBlur={() => {
         setIsClick(false);
       }}
-      className={`rounded border w-fit focus:border-L_Gray px-5 py-10px ${
+      className={`rounded border flex items-center gap-2 w-fit focus:border-L_Gray px-5 py-10px ${
         disable
           ? "bg-Silver text-Grey-blue"
           : "text-Primary hover:bg-Silver hover:border-Primary"
