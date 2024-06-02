@@ -27,7 +27,7 @@ const p: Variants = {
   },
 };
 const logos = [...Array(7)].map((_, index) => (
-  <motion.div variants={p} className="relative w-12 h-12">
+  <motion.div key={index} variants={p} className="relative w-12 h-12">
     {" "}
     <Image src={`/images/Logo-${index}.webp`} fill alt="" />
   </motion.div>

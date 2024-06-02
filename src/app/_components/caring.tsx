@@ -25,7 +25,7 @@ const container: Variants = {
 export default function Caring() {
   return (
     <motion.section
-    variants={container}
+      variants={container}
       viewport={{ once: true }}
       initial={"hide"}
       whileInView={"visible"}
@@ -44,9 +44,9 @@ export default function Caring() {
         >
           {" "}
           The Nexcent blog is the best place to read about the latest membership
-          insights, trends and more. See who's joining the community, read about
-          how our community are increasing their membership income and lot's
-          more.​
+          insights, trends and more. See who&apos;s joining the community, read
+          about how our community are increasing their membership income and
+          lot&apos;s more.
         </motion.p>
       </div>
       <ul className="flex flex-col items-center md:flex-row justify-around gap-4 md:gap-8">
