@@ -1,4 +1,5 @@
 "use client";
+import { useInView } from "framer-motion";
 import React, { memo, useEffect, useState } from "react";
 
 interface CounterAnimationProps {
@@ -11,10 +12,12 @@ export default memo(function CounterAnimation({
   initialValue,
   targetValue,
   duration,
-}: CounterAnimationProps): number {
+}: CounterAnimationProps): React.ReactElement {
   const [count, setCount] = useState<number>(initialValue);
-
+  const pRef = React.useRef(null);
+  const inView = useInView(pRef, { once: true });
   useEffect(() => {
+    if (!inView) return;
     let startValue: number = initialValue;
     const totalSteps = Math.floor(duration / 10);
     const increment: number = (targetValue - initialValue) / totalSteps;
@@ -32,11 +35,11 @@ export default memo(function CounterAnimation({
     }, interval);
 
     return () => clearInterval(counter);
-  }, [initialValue, targetValue, duration]);
+  }, [inView]);
 
-  //   useEffect(() => {
-  //     console.log(count);
-  //   }, [count]);
-
-  return count;
+  return (
+    <p ref={pRef} className="text-h4 md:text-h3 text-D_Gray font-semibold">
+      {count}
+    </p>
+  );
 });

@@ -2,7 +2,7 @@
 import TertiaryButton from "@/components/TertiaryButton";
 import { Variants, motion } from "framer-motion";
 import React from "react";
-const p: Variants = {
+const items: Variants = {
   hide: {
     scale: 0,
   },
@@ -10,39 +10,36 @@ const p: Variants = {
     scale: 1,
   },
 };
+const container: Variants = {
+  hide: {
+    scale: 0,
+  },
+  visible: {
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
 export default function Caring() {
   return (
     <motion.section
+    variants={container}
       viewport={{ once: true }}
       initial={"hide"}
       whileInView={"visible"}
-      transition={{
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-        duration: 1,
-      }}
       className="flex flex-col items-center py-4 px-4 gap-y-6"
     >
-      <motion.div
-        viewport={{ once: true }}
-        initial={"hide"}
-        whileInView={"visible"}
-        transition={{
-          delayChildren: 0.3,
-          staggerChildren: 0.2,
-          duration: 1,
-        }}
-        variants={p}
-        className="w-full text-center items-center gap-1 md:gap-3 flex flex-col"
-      >
+      <div className="w-full text-center items-center gap-1 md:gap-3 flex flex-col">
         <motion.p
-          variants={p}
+          variants={items}
           className="text-h4 font-semibold text-D_Gray md:text-h2"
         >
           Caring is the new marketing
         </motion.p>
         <motion.p
-          variants={p}
+          variants={items}
           className="text-b4 text-Gray md:text-b2 md:w-7/12"
         >
           {" "}
@@ -51,21 +48,10 @@ export default function Caring() {
           how our community are increasing their membership income and lot's
           more.​
         </motion.p>
-      </motion.div>
-      <motion.ul
-        viewport={{ once: true }}
-        initial={"hide"}
-        whileInView={"visible"}
-        transition={{
-          delayChildren: 0.3,
-          staggerChildren: 0.2,
-          duration: 1,
-        }}
-        variants={p}
-        className="flex flex-col items-center md:flex-row justify-around gap-4 md:gap-8"
-      >
+      </div>
+      <ul className="flex flex-col items-center md:flex-row justify-around gap-4 md:gap-8">
         <motion.li
-          variants={p}
+          variants={items}
           className="bg-Silver shadow-md flex flex-col justify-between items-center gap-2 md:gap-4 md:w-[317px] md:h-[176px] w-[230px] h-[130px] p-4"
         >
           <p className="font-semibold text-Gray text-base md:text-h4 text-center">
@@ -79,7 +65,7 @@ export default function Caring() {
           />
         </motion.li>
         <motion.li
-          variants={p}
+          variants={items}
           className="bg-Silver shadow-md flex flex-col justify-between items-center gap-2 md:gap-4 md:w-[317px] md:h-[176px] w-[230px] h-[130px] p-4"
         >
           <p className="font-semibold text-Gray text-base md:text-h4 text-center">
@@ -94,7 +80,7 @@ export default function Caring() {
           />
         </motion.li>
         <motion.li
-          variants={p}
+          variants={items}
           className="bg-Silver shadow-md flex flex-col justify-between items-center gap-2 md:gap-4 md:w-[317px] md:h-[176px] w-[230px] h-[130px] p-4"
         >
           <p className="font-semibold text-Gray text-base md:text-h4 text-center">
@@ -107,7 +93,7 @@ export default function Caring() {
             font="medium"
           />
         </motion.li>
-      </motion.ul>
+      </ul>
     </motion.section>
   );
 }

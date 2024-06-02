@@ -24,37 +24,33 @@ const cards = [
   },
 ];
 const items: Variants = {
-  hidden: { scale: 0 },
+  hide: { scale: 0 },
   visible: {
     scale: 1,
   },
 };
-
+const container: Variants = {
+  hide: {
+    scale: 0,
+  },
+  visible: {
+    scale: 1,
+    transition: {
+      delayChildren: 0.5,
+      staggerChildren: 0.7,
+    },
+  },
+};
 export default function Community() {
   return (
     <motion.section
       viewport={{ once: true }}
-      transition={{
-        delayChildren: 1,
-        staggerChildren: 2,
-        duration:1
-      }}
-      initial="hidden"
+      variants={container}
+      initial="hide"
       whileInView="visible"
       className="w-full flex flex-col items-center px-4 py-2"
     >
-      <motion.div
-        viewport={{ once: true }}
-        variants={items}
-        transition={{
-          delayChildren: 0.3,
-          staggerChildren: 0.2,
-          duration:1
-        }}
-        initial="hidden"
-        whileInView="visible"
-        className="flex flex-col gap-2 items-center"
-      >
+      <div className="flex flex-col gap-2 items-center">
         <motion.p
           variants={items}
           className="text-D_Gray text-h4 font-semibold md:text-h2"
@@ -70,19 +66,8 @@ export default function Community() {
         <motion.p variants={items} className="text-Gray text-b4 md:text-b2">
           Who is Nextcent suitable for?
         </motion.p>
-      </motion.div>
-      <motion.div
-        viewport={{ once: true }}
-        variants={items}
-        transition={{
-          delayChildren: 0.3,
-          staggerChildren: 0.2,
-          duration:1
-        }}
-        initial="hidden"
-        whileInView="visible"
-        className="flex flex-col items-center md:flex-row justify-around w-full gap-6"
-      >
+      </div>
+      <div className="flex flex-col items-center md:flex-row justify-around w-full gap-6">
         {cards.map((e, i) => (
           <motion.div
             variants={items}
@@ -104,7 +89,7 @@ export default function Community() {
             </p>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </motion.section>
   );
 }

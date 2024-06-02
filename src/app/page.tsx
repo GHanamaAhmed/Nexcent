@@ -6,6 +6,7 @@ import Design from "./_components/design";
 import Business from "./_components/business";
 import Customers from "./_components/customers";
 import Caring from "./_components/caring";
+import Demo from "./_components/demo";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Design />
       <Customers/>
       <Caring/>
+      <Demo/>
     </main>
   );
 }

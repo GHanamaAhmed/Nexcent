@@ -5,7 +5,7 @@ import { Variants, motion } from "framer-motion";
 import Carousel from "@/components/slider";
 import TertiaryButton from "@/components/TertiaryButton";
 import PrimaryButton from "@/components/primaryButton";
-const p: Variants = {
+const items: Variants = {
   hide: {
     scale: 0,
   },
@@ -13,8 +13,20 @@ const p: Variants = {
     scale: 1,
   },
 };
+const container: Variants = {
+  hide: {
+    scale: 0,
+  },
+  visible: {
+    scale: 1,
+    transition: {
+      delayChildren: 0.5,
+      staggerChildren: 0.7,
+    },
+  },
+};
 const logos = [...Array(7)].map((_, index) => (
-  <motion.div variants={p} className="relative w-12 h-12">
+  <motion.div variants={items} className="relative w-12 h-12">
     {" "}
     <Image src={`/images/Logo-${index}.webp`} fill alt="" />
   </motion.div>
@@ -25,21 +37,20 @@ export default function Customers() {
       viewport={{ once: true }}
       initial={"hide"}
       whileInView={"visible"}
-      transition={{
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-        duration: 1,
-      }}
+      variants={container}
       className="grid grid-cols-1 md:grid-cols-2 justify-items-center items-center gap-7 px-4 py-4"
     >
-      <motion.div variants={p}>
-        <div className="relative w-[248px] h-[248px] md:w-[326px] md:h-[326px]">
+      <div>
+        <motion.div
+          variants={items}
+          className="relative w-[248px] h-[248px] md:w-[326px] md:h-[326px]"
+        >
           <Image src={"/images/image 9.webp"} fill alt="" />
-        </div>
-      </motion.div>
-      <motion.div className="max-w-full">
+        </motion.div>
+      </div>
+      <div className="max-w-full">
         <motion.p
-          variants={p}
+          variants={items}
           className="text-Gray text-b4 md:text-b2 font-medium mb-4"
         >
           Maecenas dignissim justo eget nulla rutrum molestie. Maecenas lobortis
@@ -54,39 +65,22 @@ export default function Customers() {
           dignissim finibus ac sit amet magna.
         </motion.p>
         <motion.p
-          variants={p}
+          variants={items}
           className="text-Primary text-h4 font-semibold mb-2"
         >
           Tim Smith
         </motion.p>
-        <motion.p variants={p} className="text-L_Gray text-b4 md:font-b2 mb-4">
+        <motion.p
+          variants={items}
+          className="text-L_Gray text-b4 md:font-b2 mb-4"
+        >
           British Dragon Boat Racing Association
         </motion.p>
-        <motion.div
-          viewport={{ once: true }}
-          initial={"hide"}
-          whileInView={"visible"}
-          transition={{
-            delayChildren: 0.3,
-            staggerChildren: 0.2,
-            duration: 1,
-          }}
-          className="flex-col gap-4 md:gap-8 md:flex-row"
-        >
-          <motion.span
-            variants={p}
-            viewport={{ once: true }}
-            initial={"hide"}
-            whileInView={"visible"}
-            transition={{
-              delayChildren: 0.3,
-              staggerChildren: 0.2,
-              duration: 1,
-            }}
-          >
+        <div className="flex-col gap-4 md:gap-8 md:flex-row">
+          <span>
             <Carousel items={logos} disableDotsControls />
-          </motion.span>
-          <motion.div variants={p}>
+          </span>
+          <motion.div variants={items}>
             <TertiaryButton
               text="Meet all customers"
               icon="right"
@@ -94,8 +88,8 @@ export default function Customers() {
               size="md"
             />
           </motion.div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </motion.section>
   );
 }

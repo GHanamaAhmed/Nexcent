@@ -6,8 +6,8 @@ import Plus from "./plus";
 type PrimaryButton = {
   icon?: "right" | "left";
   size?: "lg" | "md" | "sm";
-  font?: "normal" | "medium"| "small";
-  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  font?: "normal" | "medium" | "small";
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   isLoading?: boolean;
   text: string;
   disable?: boolean;
@@ -35,7 +35,7 @@ export default function TertiaryButton({
       onClick={(e) => {
         e.preventDefault();
         setIsClick(true);
-        onClick!(e);
+        onClick?.(e);
       }}
       onBlur={() => {
         setIsClick(false);

@@ -11,6 +11,18 @@ const items: Variants = {
     scale: 1,
   },
 };
+const container: Variants = {
+  hide: {
+    scale: 0,
+  },
+  visible: {
+    scale: 1,
+    transition: {
+      delayChildren: 0.5,
+      staggerChildren: 0.7,
+    },
+  },
+};
 export default function Design() {
   return (
     <motion.section
@@ -19,11 +31,7 @@ export default function Design() {
       viewport={{
         once: true,
       }}
-      transition={{
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-        duration: 1,
-      }}
+      variants={container}
       className=" grid grid-cols-1 md:grid-cols-2 md:items-center	 justify-items-center px-4 py-4 gap-y-12"
     >
       <motion.div
@@ -32,19 +40,7 @@ export default function Design() {
       >
         <Image src={"/images/pana.webp"} fill alt="pana" />
       </motion.div>
-      <motion.div
-        variants={items}
-        initial="hide"
-        whileInView="visible"
-        viewport={{
-          once: true,
-        }}
-        transition={{
-          delayChildren: 0.3,
-          staggerChildren: 0.2,
-          duration: 1,
-        }}
-      >
+      <div>
         <motion.p
           variants={items}
           className="text-D_Gray text-h4 md:text-h2 font-semibold mb-4"
@@ -64,8 +60,10 @@ export default function Design() {
           quis massa. Praesent felis est, finibus et nisi ac, hendrerit
           venenatis libero. Donec consectetur faucibus ipsum id gravida.
         </motion.p>
-        <motion.div variants={items}><PrimaryButton text="Learn More" font="medium" size="sm" /></motion.div>
-      </motion.div>
+        <motion.div variants={items}>
+          <PrimaryButton text="Learn More" font="medium" size="sm" />
+        </motion.div>
+      </div>
     </motion.section>
   );
 }

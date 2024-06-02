@@ -2,49 +2,66 @@
 import PrimaryButton from "@/components/primaryButton";
 import SecondaryButton from "@/components/secondaryButton";
 import Image from "next/image";
-import React from "react";
-import { motion, Variants, MotionConfig } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import {
+  motion,
+  Variants,
+  MotionConfig,
+  useAnimate,
+  animate,
+  motionValue,
+  useTransform,
+  useInView,
+} from "framer-motion";
+import Link from "next/link";
 const varaints: Variants = {
-  left: {
-    translateX: "-100%",
-    opacity: 0,
-  },
-  right: {
-    translateX: "100%",
-    opacity: 0,
-  },
   up: {
-    translateY: "-100%",
+    translateY: "-50%",
     opacity: 0,
   },
   initial: {
-    translateX: 0,
     translateY: 0,
     opacity: 1,
   },
 };
 export default function Header() {
+  const translateX = motionValue(100);
+  const _translateX = useTransform(translateX, [100, 0], [-100, 0]);
+  const opacity = useTransform(translateX, [100, 0], [0, 1]);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  useEffect(() => {
+    if (!isInView) return;
+    animate(translateX, 0, { duration: 1 });
+  }, [isInView]);
   return (
     <header
-
-      className="w-full flex justify-around items-center py-2 bg-Silver"
+      ref={ref}
+      className="w-full flex justify-around items-center py-2 bg-Silver overflow-hidden"
     >
       <MotionConfig
         transition={{
-          
           duration: 1,
         }}
       >
-        <motion.span
-          variants={varaints}
-          viewport={{ once: true }}
-          initial="left"
-          whileInView="initial"
-          className="flex gap-1"
-        >
-          <Image src={"/images/Icon.webp"} height={25} width={25} alt="icon" />
-          <h5 className="font-semibold ">Nexcent</h5>
-        </motion.span>
+        <Link href="/">
+          <motion.span
+            style={{
+              translateX: _translateX,
+              opacity,
+            }}
+            className="flex gap-1"
+          >
+            <Image
+              src={"/images/Icon.webp"}
+              height={25}
+              width={25}
+              alt="icon"
+            />
+            <h5 className="font-semibold ">Nexcent</h5>
+          </motion.span>
+        </Link>
+
         <motion.ul
           variants={varaints}
           viewport={{ once: true }}
@@ -60,10 +77,10 @@ export default function Header() {
           <li>FAQ</li>
         </motion.ul>
         <motion.div
-          variants={varaints}
-          initial="right"
-          viewport={{ once: true }}
-          whileInView="initial"
+          style={{
+            translateX: translateX,
+            opacity,
+          }}
           className="flex gap-1"
         >
           <SecondaryButton font="medium" text="Sign in" />

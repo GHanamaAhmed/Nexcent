@@ -11,6 +11,18 @@ const items: Variants = {
     scale: 1,
   },
 };
+const container: Variants = {
+  hide: {
+    scale: 0,
+  },
+  visible: {
+    scale: 1,
+    transition: {
+      delayChildren: 0.5,
+      staggerChildren: 0.7,
+    },
+  },
+};
 export default function Pixelgrade() {
   return (
     <motion.section
@@ -19,34 +31,16 @@ export default function Pixelgrade() {
       viewport={{
         once: true,
       }}
-      transition={{
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-        duration: 1,
-      }}
+      variants={container}
       className="py-3 grid grid-cols-1 justify-items-center md:grid-cols-2 gap-8 px-4"
     >
       <motion.div
-      
         variants={items}
         className="relative w-[247px] h-[188px] md:w-[441px] md:h-[329px] md:justify-self-end"
       >
         <Image fill src="/images/rafiki.webp" alt="rafiki" />
       </motion.div>
-      <motion.div
-        className="w-fit md:justify-self-start"
-        initial="hide"
-        whileInView="visible"
-        viewport={{
-          once: true,
-        }}
-        transition={{
-          delayChildren: 0.3,
-          staggerChildren: 0.2,
-          duration: 1,
-        }}
-        variants={items}
-      >
+      <div className="w-fit md:justify-self-start">
         <motion.p
           variants={items}
           className="text-D_Gray text-h4 md:text-h2 pb-4"
@@ -64,8 +58,11 @@ export default function Pixelgrade() {
           Etiam quis massa pulvinar, aliquam quam vitae, tempus sem. Donec
           elementum pulvinar odio.
         </motion.p>
-        <PrimaryButton text="Learn More" size="sm" font="medium" />
-      </motion.div>
+        <motion.span variants={items}>
+          {" "}
+          <PrimaryButton text="Learn More" size="sm" font="medium" />
+        </motion.span>
+      </div>
     </motion.section>
   );
 }

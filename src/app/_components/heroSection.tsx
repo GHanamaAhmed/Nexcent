@@ -24,7 +24,7 @@ export default function HeroSection() {
         once: true,
         amount: 0.8,
       }}
-      className="bg-Silver flex flex-col md:flex-row-reverse items-center md:justify-around px-7 pt-4 pb-3"
+      className="bg-Silver flex flex-col md:flex-row-reverse overflow-hidden items-center md:justify-around px-7 pt-4 pb-3"
     >
       <motion.span
         viewport={{ once: true }}
