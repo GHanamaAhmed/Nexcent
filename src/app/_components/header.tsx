@@ -48,9 +48,8 @@ export default function Header() {
           <motion.span
             style={{
               translateX: _translateX,
-              opacity,
             }}
-            className="flex gap-1"
+            className={`flex gap-1`}
           >
             <Image
               src={"/images/Icon.webp"}

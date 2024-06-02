@@ -34,7 +34,15 @@ const logos = [...Array(7)].map((_, index) => (
 ));
 export default function OurClient() {
   return (
-    <section className="flex w-full flex-col gap-2 items-center py-4">
+    <motion.section
+      whileInView={{
+        transition: {
+          delayChildren: 0.7,
+          staggerChildren: 0.5,
+        },
+      }}
+      className="flex w-full flex-col gap-2 items-center py-4"
+    >
       <motion.p
         initial="left"
         whileInView="initial"
@@ -69,6 +77,6 @@ export default function OurClient() {
           <Carousel items={logos} />
         </motion.div>
       </AnimatePresence>
-    </section>
+    </motion.section>
   );
 }

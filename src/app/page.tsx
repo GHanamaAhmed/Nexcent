@@ -10,7 +10,7 @@ import Demo from "./_components/demo";
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="overflow-x-hidden">
       <HeroSection />
       <OurClient />
       <Community />

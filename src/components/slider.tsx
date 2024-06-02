@@ -12,7 +12,6 @@ const responsive = {
   },
   1024: {
     items: 7,
-    itemsFit: "contain",
   },
 };
 const renderDotsItem = ({ isActive }: { isActive: boolean }) => {
@@ -33,7 +32,7 @@ const Carousel = ({
   const [hydration, setHydration] = useState(false);
   useEffect(() => {
     setHydration(true);
-  });
+  }, []);
   return (
     <AliceCarousel
       responsive={hydration ? responsive : undefined}

@@ -26,7 +26,7 @@ const container: Variants = {
   },
 };
 const logos = [...Array(7)].map((_, index) => (
-  <motion.div key={index} variants={items} className="relative w-12 h-12">
+  <motion.div key={index} className="relative w-12 h-12">
     {" "}
     <Image src={`/images/Logo-${index}.webp`} fill alt="" />
   </motion.div>
@@ -49,10 +49,7 @@ export default function Customers() {
         </motion.div>
       </div>
       <div className="max-w-full">
-        <motion.p
-          variants={items}
-          className="text-Gray text-b4 md:text-b2 font-medium mb-4"
-        >
+        <motion.p className="text-Gray text-b4 md:text-b2 font-medium mb-4">
           Maecenas dignissim justo eget nulla rutrum molestie. Maecenas lobortis
           sem dui, vel rutrum risus tincidunt ullamcorper. Proin eu enim metus.
           Vivamus sed libero ornare, tristique quam in, gravida enim. Nullam ut
@@ -64,23 +61,14 @@ export default function Customers() {
           neque, eget efficitur libero condimentum id. Curabitur id nibh id sem
           dignissim finibus ac sit amet magna.
         </motion.p>
-        <motion.p
-          variants={items}
-          className="text-Primary text-h4 font-semibold mb-2"
-        >
+        <motion.p className="text-Primary text-h4 font-semibold mb-2">
           Tim Smith
         </motion.p>
-        <motion.p
-          variants={items}
-          className="text-L_Gray text-b4 md:font-b2 mb-4"
-        >
+        <motion.p className="text-L_Gray text-b4 md:font-b2 mb-4">
           British Dragon Boat Racing Association
         </motion.p>
         <div className="flex-col gap-4 md:gap-8 md:flex-row">
-          <span>
-            <Carousel items={logos} disableDotsControls />
-          </span>
-          <motion.div variants={items}>
+          <motion.div>
             <TertiaryButton
               text="Meet all customers"
               icon="right"

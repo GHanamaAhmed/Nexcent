@@ -52,7 +52,7 @@ export default function Caring() {
       <ul className="flex flex-col items-center md:flex-row justify-around gap-4 md:gap-8">
         <motion.li
           variants={items}
-          className="bg-Silver shadow-md flex flex-col justify-between items-center gap-2 md:gap-4 md:w-[317px] md:h-[176px] w-[230px] h-[130px] p-4"
+          className="bg-Silver shadow-md flex flex-col justify-between items-center gap-2 md:gap-4 md:w-[317px] md:h-[190px] w-[230px] h-[150px] p-4"
         >
           <p className="font-semibold text-Gray text-base md:text-h4 text-center">
             Creating Streamlined Safeguarding Processes with OneRen
@@ -66,7 +66,7 @@ export default function Caring() {
         </motion.li>
         <motion.li
           variants={items}
-          className="bg-Silver shadow-md flex flex-col justify-between items-center gap-2 md:gap-4 md:w-[317px] md:h-[176px] w-[230px] h-[130px] p-4"
+          className="bg-Silver shadow-md flex flex-col justify-between items-center gap-2 md:gap-4 md:w-[317px] md:h-[190px] w-[230px] h-[150px] p-4"
         >
           <p className="font-semibold text-Gray text-base md:text-h4 text-center">
             What are your safeguarding responsibilities and how can you manage
@@ -81,7 +81,7 @@ export default function Caring() {
         </motion.li>
         <motion.li
           variants={items}
-          className="bg-Silver shadow-md flex flex-col justify-between items-center gap-2 md:gap-4 md:w-[317px] md:h-[176px] w-[230px] h-[130px] p-4"
+          className="bg-Silver shadow-md flex flex-col justify-between items-center gap-2 md:gap-4 md:w-[317px] md:h-[190px] w-[230px] h-[150px] p-4"
         >
           <p className="font-semibold text-Gray text-base md:text-h4 text-center">
             Revamping the Membership Model with Triathlon Australia{" "}
