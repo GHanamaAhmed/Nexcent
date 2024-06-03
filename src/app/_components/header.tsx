@@ -7,15 +7,14 @@ import {
   motion,
   Variants,
   MotionConfig,
-  useAnimate,
   animate,
   motionValue,
   useTransform,
   useInView,
 } from "framer-motion";
 import Link from "next/link";
-import {} from "next/navigation";
-const varaints: Variants = {
+
+const variants: Variants = {
   up: {
     translateY: "-50%",
     opacity: 0,
@@ -25,19 +24,23 @@ const varaints: Variants = {
     opacity: 1,
   },
 };
+
 export default function Header() {
   const translateX = motionValue(100);
   const _translateX = useTransform(translateX, [100, 0], [-100, 0]);
   const opacity = useTransform(translateX, [100, 0], [0, 1]);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
   const [hasAnimated, setHasAnimated] = useState(false);
+
   useEffect(() => {
     if (isInView && !hasAnimated) {
       animate(translateX, 0, { duration: 1 });
       setHasAnimated(true);
     }
-  }, [isInView, hasAnimated]);
+  }, [isInView, hasAnimated, translateX]);
+
   return (
     <header
       ref={ref}
@@ -52,8 +55,9 @@ export default function Header() {
           <motion.span
             style={{
               translateX: _translateX,
+              opacity
             }}
-            className={`flex gap-1`}
+            className="flex gap-1"
           >
             <Image
               src={"/images/Icon.webp"}
@@ -66,7 +70,7 @@ export default function Header() {
         </Link>
 
         <motion.ul
-          variants={varaints}
+          variants={variants}
           viewport={{ once: true }}
           initial="up"
           whileInView="initial"
