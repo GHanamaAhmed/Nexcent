@@ -96,7 +96,7 @@ export default function Footer() {
         </ul>
       </div>
       <div className="col-start-1 col-end-3 row-start-4 row-end-6 py-2 flex flex-col gap-4 md:col-start-1 md:col-end-2 md:row-start-1 md:row-end-2">
-        <Link href="#">
+        <a href="#">
           {" "}
           <motion.div variants={items} className="flex gap-1">
             <motion.span variants={items}>
@@ -115,7 +115,7 @@ export default function Footer() {
               Nexcent
             </motion.h1>
           </motion.div>
-        </Link>
+        </a>
         <div className="flex flex-col gap-2">
           <motion.p variants={items} className="text-b3 text-Silver ">
             Copyright © 2020 Nexcent ltd.

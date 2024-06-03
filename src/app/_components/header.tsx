@@ -2,7 +2,7 @@
 import PrimaryButton from "@/components/primaryButton";
 import SecondaryButton from "@/components/secondaryButton";
 import Image from "next/image";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import {
   motion,
   Variants,
@@ -13,7 +13,7 @@ import {
   useInView,
 } from "framer-motion";
 import Link from "next/link";
-
+import { useRouter, usePathname } from "next/navigation";
 const variants: Variants = {
   up: {
     translateY: "-50%",
@@ -29,17 +29,14 @@ export default function Header() {
   const translateX = motionValue(100);
   const _translateX = useTransform(translateX, [100, 0], [-100, 0]);
   const opacity = useTransform(translateX, [100, 0], [0, 1]);
+  const pathname = usePathname();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.8 });
-
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  useLayoutEffect(() => {
+  const isInView = useInView(ref, { once: true });
+  useEffect(() => {
     if (isInView) {
-      animate(translateX, 0, { duration: 1 })
+      animate(translateX, 0, { duration: 1 });
     }
   }, [isInView]);
-
   return (
     <header
       ref={ref}
@@ -50,7 +47,7 @@ export default function Header() {
           duration: 1,
         }}
       >
-        <Link href="#">
+        <a href="#">
           <motion.span
             style={{
               translateX: _translateX,
@@ -66,7 +63,7 @@ export default function Header() {
             />
             <h5 className="font-semibold ">Nexcent</h5>
           </motion.span>
-        </Link>
+        </a>
 
         <motion.ul
           variants={variants}
