@@ -44,7 +44,7 @@ export default function Header() {
           duration: 1,
         }}
       >
-        <Link href="/">
+        <Link href="#">
           <motion.span
             style={{
               translateX: _translateX,
