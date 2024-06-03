@@ -38,7 +38,7 @@ export default function Customers() {
       initial={"hide"}
       whileInView={"visible"}
       variants={container}
-      className="grid grid-cols-1 md:grid-cols-2 justify-items-center items-center gap-7 px-4 py-4"
+      className="grid grid-cols-1 md:grid-cols-2 justify-items-center items-center md:gap-7 px-4 py-4"
     >
       <div>
         <motion.div

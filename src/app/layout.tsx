@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "./_components/header";
 import Footer from "./_components/footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,10 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <body className={inter.className+" overflow-x-hidden"}>
+      <body style={inter.style} className={`overflow-x-hidden`}>
         <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

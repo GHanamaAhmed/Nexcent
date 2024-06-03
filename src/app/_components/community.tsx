@@ -48,7 +48,7 @@ export default function Community() {
       variants={container}
       initial="hide"
       whileInView="visible"
-      className="w-full flex flex-col items-center px-4 py-2"
+      className="w-full flex flex-col items-center gap-2 px-4 py-2"
     >
       <div className="flex flex-col gap-2 items-center">
         <motion.p
@@ -72,7 +72,7 @@ export default function Community() {
           <motion.div
             variants={items}
             key={i}
-            className="flex flex-col items-center py-6 px-8 shadow-md"
+            className="flex flex-col items-center py-6 px-8 shadow-md md:min-h-[263.14px]"
           >
             <Image
               className="pb-4"
