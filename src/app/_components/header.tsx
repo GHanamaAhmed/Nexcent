@@ -2,7 +2,7 @@
 import PrimaryButton from "@/components/primaryButton";
 import SecondaryButton from "@/components/secondaryButton";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   motion,
   Variants,
@@ -30,16 +30,15 @@ export default function Header() {
   const _translateX = useTransform(translateX, [100, 0], [-100, 0]);
   const opacity = useTransform(translateX, [100, 0], [0, 1]);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, amount: 0.8 });
 
   const [hasAnimated, setHasAnimated] = useState(false);
 
-  useEffect(() => {
-    if (isInView && !hasAnimated) {
-      animate(translateX, 0, { duration: 1 });
-      setHasAnimated(true);
+  useLayoutEffect(() => {
+    if (isInView) {
+      animate(translateX, 0, { duration: 1 })
     }
-  }, [isInView, hasAnimated, translateX]);
+  }, [isInView]);
 
   return (
     <header
@@ -55,7 +54,7 @@ export default function Header() {
           <motion.span
             style={{
               translateX: _translateX,
-              opacity
+              opacity,
             }}
             className="flex gap-1"
           >
