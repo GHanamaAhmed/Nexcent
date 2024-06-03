@@ -2,7 +2,7 @@
 import PrimaryButton from "@/components/primaryButton";
 import SecondaryButton from "@/components/secondaryButton";
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
   Variants,
@@ -14,6 +14,7 @@ import {
   useInView,
 } from "framer-motion";
 import Link from "next/link";
+import {} from "next/navigation";
 const varaints: Variants = {
   up: {
     translateY: "-50%",
@@ -30,10 +31,13 @@ export default function Header() {
   const opacity = useTransform(translateX, [100, 0], [0, 1]);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const [hasAnimated, setHasAnimated] = useState(false);
   useEffect(() => {
-    if (!isInView) return;
-    animate(translateX, 0, { duration: 1 });
-  }, [isInView]);
+    if (isInView && !hasAnimated) {
+      animate(translateX, 0, { duration: 1 });
+      setHasAnimated(true);
+    }
+  }, [isInView, hasAnimated]);
   return (
     <header
       ref={ref}
